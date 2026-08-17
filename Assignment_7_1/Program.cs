@@ -11,6 +11,11 @@
 // since that is an easy way of implementation.
 //
 
+// Description of selection sort - algorithm used for sorting
+// Selection sort uses two pointers and goes through from start
+// to finish, and moves the lowest value to the beginning of
+// the array.
+
 // initialize randomizer
 Random random = new();
 // main loop
@@ -20,12 +25,12 @@ do
     Console.Clear();
 
     // randomize size of array
-    int[] randScores = new int[random.Next(4, 5)]; 
+    int[] randScores = new int[random.Next(3, 6)]; 
 
     for (int i = 0; i < randScores.Length; i++)
     {
         // assign random values to scores
-        randScores[i] = random.Next(40, 101); 
+        randScores[i] = random.Next(10, 78); 
     }
     // show currenting order of array
     ShowArray(randScores);
@@ -56,28 +61,25 @@ void SelectionSort(int[] array, out int[] result)
             }
         }
 
-        if (newlowestFound)
-        {
-            //ShowArray(array, false);
-            //Console.WriteLine("  (found minElement_" + array[minElement] + "  switching with current_" + array[current] + ")");
-            
-            //(array[current], array[lowestIndex]) = (array[lowestIndex], array[current]); // use tuple structure
+        // do swap under all conditions, no conditional needed here
+        (array[current], array[minElement]) = (array[minElement], array[current]); // use tuple structure
 
-            // or three way swap structure
-            int temp = array[current];
-            array[current] = array[minElement];
-            array[minElement] = temp;
-            newlowestFound = false;
-        }
-
-
+        //if (true) //newlowestFound)
+        //{
+        //ShowArray(array, false);
+        //Console.WriteLine("  (found minElement_" + array[minElement] + "  switching with current_" + array[current] + ")");
+        // or three way swap structure
+        //    int temp = array[current];
+        //    array[current] = array[minElement];
+        //    array[minElement] = temp;
+        //    newlowestFound = false;
+        //}
     }
     result = array;
 }
 //===========================================================
 void ShowArray(int[] nums, bool newLine = true) // used for admin/main to show contents of 'stack' and test functionality
 {
-    //Console.Write(string.Join(", ", DataCache));
     Console.Write("   array is:  [");
     for (int i = 0; i < nums.Length; i++)
     {
